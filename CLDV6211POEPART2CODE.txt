@@ -1,0 +1,170 @@
+CREATE DATABASE therideyourent_ST10090701;
+--created tables
+CREATE TABLE Rental_ST10090701
+(
+CarNo VARCHAR (50),
+Inspector VARCHAR (50),
+Driver VARCHAR (50),
+RentalFee VARCHAR (255),
+StartDate DATE NOT NULL,
+EndDate Date NOT NULL,
+)
+
+CREATE TABLE Car_ST10090701
+(
+CarNoID VARCHAR (50),
+CarMake CHAR (50),
+Model CHAR (50),
+BodyType CHAR (50),
+KilometresTravelled VARCHAR (255),
+ServiceKilometres VARCHAR (255),
+Available VARCHAR (3),
+PRIMARY KEY (CarNoID),
+CONSTRAINT FK_CarRental FOREIGN KEY (CarNoID)
+REFERENCES Car_ST10090701(CarNoID)
+)
+
+CREATE TABLE Inspector_ST10090701
+(
+Inspector_No VARCHAR (255),
+InsFullName VARCHAR (255),
+InsEmail VARCHAR (255),
+InsMobile VARCHAR (10),
+PRIMARY KEY (InsFullName),
+)
+
+CREATE TABLE Driver_ST10090701
+(
+DriFullName VARCHAR (50),
+DriAddress VARCHAR (100),
+DriEmail VARCHAR (255),
+DriMobile VARCHAR (10),
+PRIMARY KEY (DriFullName),
+)
+
+CREATE TABLE Return_ST10090701
+(
+RentalID INT PRIMARY KEY,
+CarNo VARCHAR (50),
+Inspector VARCHAR (50),
+Driver VARCHAR (50),
+ReturnDate DATE NOT NULL,
+ElapsedDate VARCHAR (50),
+Fine VARCHAR (50),
+)
+
+CREATE TABLE Fine_ST10090701
+(
+FineID VARCHAR PRIMARY KEY,
+Fine VARCHAR (50),
+)
+
+
+-- populated tables
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('HYU001','Hyundai','Grand i10 1.0 Motion','Hatchback','1500','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('HYU002','Hyundai','i20 1.2 Fluid','Hatchback','3000','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('BMW001','BMW','320d 1.2','Sedan','20000','50000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('BMW002','BMW','240d 1.4','Sedan','9500','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('TOY001','Toyota','Corolla 1.0','Sedan','15000','50000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('TOY002','Toyota','Avanza 1.0','SUV','98000','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('TOY003','Toyota','Corolla Quest 1.0','Sedan','15000','50000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('MER001','MercedesBenz','c180','Sedan','5200','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('MER002','MercedesBenz','A200 Sedan','Sedan','4080','15000','yes');
+INSERT INTO Car_ST10090701 (CarNoID,CarMake,Model,BodyType,KilometresTravelled,ServiceKilometres,Available)
+VALUES ('FOR001','Ford','Fiesta 1.0','Sedan','7600','15000','yes');
+
+INSERT INTO Inspector_ST10090701 (Inspector_No,InsFullName,InsEmail,InsMobile)
+VALUES ('l101','Bud Barnes','bud@therideyourent.com','0821585359');
+INSERT INTO Inspector_ST10090701 (Inspector_No,InsFullName,InsEmail,InsMobile)
+VALUES ('l102','Tracey Reeves','tracey@therideyourent.com','0822889988');
+INSERT INTO Inspector_ST10090701 (Inspector_No,InsFullName,InsEmail,InsMobile)
+VALUES ('l103','Sandra Goodwin','sandra@therideyourent.com','0837695468');
+INSERT INTO Inspector_ST10090701 (Inspector_No,InsFullName,InsEmail,InsMobile)
+VALUES ('l104','Shannon Burke','shannon@therideyourent.com','0836802514');
+
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Gabrielle Clarke','917 Heuvel St Botshabelo Free State 9781','gorix10987@macauvpn.com','0837113269');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Geoffrey Clarke','1114 Dorp St Paarl Western Cape 7655','noceti8743@drlatvia.com','0847728052');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Fawn Cooke','2158 Prospect St Garsfontein Gauteng 0042','yegifav388@enamelme.com','0821966584');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Darlene Peters','2529 St. John Street Somerset West Western Cape 7110','mayeka4267@macauvpn.com','0841221244');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Vita Soto','1474 Wolmarans St Sundra Mpumalanga 2200','wegog55107@drlatvia.com','0824567924');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Opal Rehbein','697 Thutlwa St Letaba Limpopo 0870','yiyow34505@enpaypal.com','0826864938');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Vernon Hodgson','1935 Thutlwa St Letsitele Limpopo 0885','gifeh11935@enamelme.com','0855991446');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Crispin Wheatly','330 Sandown Rd Cape Town Western Cape 8018','likon78255@macauvpn.com','0838347945');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Melanie Cunningham','616 Loop St Atlantis Western Cape 7350','sehapeb835@macauvpn.com','0827329001');
+INSERT INTO Driver_ST10090701 (DriFullName,DriAddress,DriEmail,DriMobile)
+VALUES ('Kevin Peay','814 Daffodil Dr Elliotdale Eastern Cape 5118','xajic53991@enpaypal.com','0832077149');
+
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('HYU001','Bud Barnes','Gabrielle Clarke','5000','2021-08-30','2021-08-31');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('HYU002','Bud Barnes','Gabrielle Clarke','5000','2021-09-01','2021-09-10');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('FOR001','Bud Barnes','Geoffrey Clarke','6500','2021-09-01','2021-09-10');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('BMW002','Tracey Reeves','Vita Soto','7000','2021-09-20','2021-09-25');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('TOY002','Tracey Reeves','Darlene Peters','5000','2021-10-03','2021-10-31');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('MER001','Sandra Goodwin','Darlene Peters','8000','2021-10-05','2021-10-15');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('HYU002','Shannon Burke','Vernon Hodgson','5000','2021-12-01','2022-02-10');
+INSERT INTO Rental_ST10090701 (CarNo,Inspector,Driver,RentalFee,StartDate,EndDate)
+VALUES ('TOY003','Shannon Burke','Melanie Cunningham','5000','2021-08-10','2021-08-31');
+
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('HYU001','Bud Barnes','Gabrielle Clarke','2021-08-31','0','0');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('HYU002','Bud Barnes','Gabrielle Clarke','2021-09-10','0','0');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('FOR001','Bud Barnes','Geoffrey Franklin','2021-09-10','0','0');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('BMW002','Tracey Reeves','Vita Soto','2021-09-30','5','2500');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('TOY002','Tracey Reeves','Darlene Peters','2021-10-31','2','1000');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('MER001','Sandra Goodwin','Darlene Peters','2021-10-15','1','500');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('HYU002','Shannon Burke','Vernon Hodgson','2022-02-10','0','0');
+INSERT INTO Return_ST10090701 (CarNo,Inspector,Driver,ReturnDate,ElapsedDate,Fine)
+VALUES ('TOY003','Shannon Burke','Melanie Cunningham','2021-08-31','0','0');
+--question 5
+SELECT StartDate, EndDate FROM Rental_ST10090701
+WHERE StartDate > '2021-08-01' AND EndDate < '2021-10-30'
+--question 6
+SELECT * FROM Rental_ST10090701
+WHERE Inspector = 'Bud Barnes';
+--question 7
+SELECT * FROM Rental_ST10090701
+WHERE CarNo = 'TOY002' AND CarNo = 'TOY003';
+--question 8
+SELECT * FROM Rental_ST10090701
+WHERE CarNo > 'HYU001' AND CarNo < 'HYU002';
+--question 9
+UPDATE Car_ST10090701
+SET Model = 'Focus'
+WHERE Model = 'Fiesta 1.0';
+--question 11
+SELECT DISTINCT CarMake FROM Car_ST10090701;
+
+--question 10
+SELECT CarNoID, Driver, RentalFee, StartDate, EndDate, Available
+FROM Car_ST10090701, Rental_ST10090701 
+WHERE Available = 'Yes';
